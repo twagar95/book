@@ -6,10 +6,10 @@ for making the decision.
 
 From the class discussion, we wrote down five specific questions that are particularly interesting.
 
-* ((question))
-* ((question))
-* ((question))
-* ((question))
-* ((question))
+* How much traffic is there?
+* What are the contents of the page?
+* What is being forked?
+* What are the top google search results?
+* What are the number of commits?
 
 From the above list, my team chose a question, worked on it, and created a report on the next page.

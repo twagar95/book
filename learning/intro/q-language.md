@@ -2,27 +2,41 @@
 
 ## Data
 
-* Manually gather data and make a table in Markdown
+* Manually gathered data 
 
 
 | Language | # of Students |
 | -- | -- |
-| Assembly | 0 |
+| Python    | 7 |
+| Javascript| 3 |
+| C         | 3 |
+| Java      | 3 |
+| Ruby      | 1 |
+| Haskell   | 1 |
+| C++       | 3 |
+| C#        | 1 |
+
 
 ((more rows to complete the table))
 
 ## Answer
 
-((answer))
+Python
 
 ## Visualization
 
-* Create a barchart using SVG
+* In order from top to bottom
 
 {% svg %}
 
 <!-- extend this into a barchart -->
 <rect x="0" width="20" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
-<rect x="30" width="20" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+<rect x="30" width="20" height="13.63" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+<rect x="60" width="20" height="13.63" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+<rect x="90" width="20" height="13.63" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+<rect x="150" width="20" height="4.54" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+<rect x="180" width="20" height="4.54" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+<rect x="210" width="20" height="13.63" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+<rect x="240" width="20" height="4.54" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
 
 {% endsvg %}
