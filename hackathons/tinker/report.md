@@ -32,4 +32,4 @@
 ## Recommendation
 
 We recommended SVG because it is a lightweight way to bring visualization of data to our git book. It is easily
-implemented into the markdown files and has concise and clear syntax, basically HTML.
+implemented into the markdown files and has concise and clear syntax, essentially HTML.
