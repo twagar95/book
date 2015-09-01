@@ -10,7 +10,7 @@ The comments data is imported as `data.comments`.
 
 {% lodash %}
 // TODO: write code to answer this question
-return 25
+return _.size(_.pluck(data.comments, 'body'))
 {% endlodash %}
 
 There are {{result}} submissions.
@@ -43,12 +43,11 @@ The code to retrieve the data about the favorite food is (hint: use [split()](ht
 
 {% lodash %}
 var text = _.first(data.comments).body
-console.log(text)
-console.log(text.split('\n'))
+
 
 // TODO: add code to process text to get the person's favorite food
 
-return 'Sushi'
+return _.last(text.split('Food:'))
 {% endlodash %}
 
 So, {{name}}'s favorite food is {{result}}.
