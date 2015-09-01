@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Report | book</title>
+        <title>Analysis | book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.2.0">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../hackathons/classmates/index.html" />
+    <link rel="next" href="../../hackathons/classmates/report.html" />
     
     
-    <link rel="prev" href="../../hackathons/tinker/method.html" />
+    <link rel="prev" href="../../hackathons/classmates/warmup.html" />
     
 
         <!-- head:end -->
@@ -48,7 +48,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="2.1.2" data-basepath="../.." data-revision="Mon Aug 31 2015 18:16:49 GMT-0600 (MDT)">
+    <div class="book" data-level="2.2.3" data-basepath="../.." data-revision="Mon Aug 31 2015 18:16:49 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -278,7 +278,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.2" data-path="hackathons/tinker/report.html">
+        <li class="chapter " data-level="2.1.2" data-path="hackathons/tinker/report.html">
             
                 
                     <a href="../../hackathons/tinker/report.html">
@@ -344,7 +344,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.3" data-path="hackathons/classmates/analysis.html">
+        <li class="chapter active" data-level="2.2.3" data-path="hackathons/classmates/analysis.html">
             
                 
                     <a href="../../hackathons/classmates/analysis.html">
@@ -489,79 +489,71 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="q-what-are-the-number-of-commits">Q: What are the number of commits?</h1>
-<h2 id="data">Data</h2>
-<table>
-    <tr> 
-        <td> Repository </td>
-        <td> Commits </td>
-    </tr>
+                        <h1 id="analysis">Analysis</h1>
+<p>After completing the warmup exercises, your task is to do four more slightly
+more challenges analyses.</p>
+<h2 id="how-many-students-like-sushi-as-their-favorite-food">How many students like sushi as their favorite food?</h2>
+<p><pre>
 
-        <tr>
-            <!-- Add your code here  -->
+<span class="keyword">return</span> _.size(_.filter(data.comments, <span class="keyword">function</span>(n){
+    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Sushi&quot;</span>);
+}))
 
-                <td>fouber/blog</td>
 
-                <td>15</td>
+</pre></p>
+<p>The answer is 5.</p>
+<h2 id="who-are-the-students-liking-python-the-most">Who are the students liking Python the most?</h2>
+<p><pre>
+<span class="keyword">var</span> x = _.filter(data.comments, <span class="keyword">function</span>(n){
+    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Python&quot;</span>);
+})
 
-        </tr>
 
-        <tr>
-            <!-- Add your code here  -->
+<span class="keyword">var</span> y = _.pluck(x, <span class="string">&quot;body&quot;</span>)
+<span class="keyword">var</span> nameArray = []
+<span class="keyword">var</span> finalNameArray = []
+<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; _.size(y);i++){
+    nameArray.push(_.first(y[i].split(<span class="string">&quot;\r\n&quot;</span>)))
+    finalNameArray.push(_.last(nameArray[i].split(<span class="string">&apos;Name:&apos;</span>)))
+}
 
-                <td>michaeldfallen/Git-radar</td>
+<span class="keyword">return</span> finalNameArray
+</pre></p>
+<p>Their names are  William Farmer, Heather Witte, Zach Lamb, Zhili Yang, John Cronk, Denis Kazakov, Caleb Hsu, Karen Blakemore, Sanketh S Shetty, Andrey Shprengel.</p>
+<h2 id="are-there-more-javascript-lovers-or-java-lovers">Are there more Javascript lovers or Java lovers?</h2>
+<p><pre>
+<span class="keyword">var</span> x = _.size(_.filter(data.comments, <span class="keyword">function</span>(n){
+    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Java&quot;</span>);
+}))
 
-                <td>12</td>
+<span class="keyword">var</span> y = _.size(_.filter(data.comments, <span class="keyword">function</span>(n){
+    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Javascript&quot;</span>);
+}))
+<span class="keyword">if</span>(x &gt; y)
+    <span class="keyword">return</span> <span class="string">&quot;Java&quot;</span>
+<span class="keyword">else</span>
+    <span class="keyword">return</span> <span class="string">&quot;Javascript&quot;</span>
+</pre></p>
+<p>The answer is Java.</p>
+<h2 id="who-like-the-same-food-as-kjblakemore">Who like the same food as <code>kjblakemore</code>?</h2>
+<p><pre>
+<span class="keyword">var</span> x = _.filter(data.comments, <span class="keyword">function</span>(n){
+    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Vegan&quot;</span>);
+})
 
-        </tr>
 
-        <tr>
-            <!-- Add your code here  -->
+<span class="keyword">var</span> y = _.pluck(x, <span class="string">&quot;body&quot;</span>)
+<span class="keyword">var</span> nameArray = []
+<span class="keyword">var</span> finalNameArray = []
+<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; _.size(y);i++){
+    nameArray.push(_.first(y[i].split(<span class="string">&quot;\r\n&quot;</span>)))
+    finalNameArray.push(_.last(nameArray[i].split(<span class="string">&apos;Name:&apos;</span>)))
+}
 
-                <td>flarum/flarum</td>
+<span class="keyword">return</span> finalNameArray
 
-                <td>42</td>
-
-        </tr>
-
-        <tr>
-            <!-- Add your code here  -->
-
-                <td>girlieMac/RPi-KittyCam</td>
-
-                <td>52</td>
-
-        </tr>
-
-        <tr>
-            <!-- Add your code here  -->
-
-                <td>Chneukirchen/Nq</td>
-
-                <td>24</td>
-
-        </tr>
-
-</table>
-
-<h2 id="visualization">Visualization</h2>
-<svg width="423" height="200">
-
-    <rect y="20" width="15" height="15" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
-
-    <rect y="40" width="12" height="15" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
-
-    <rect y="60" width="42" height="15" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
-
-    <rect y="80" width="52" height="15" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
-
-    <rect y="100" width="24" height="15" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)"/>
-
-</svg>
-
-<h2 id="recommendation">Recommendation</h2>
-<p>We recommended SVG because it is a lightweight way to bring visualization of data to our git book. It is easily
-implemented into the markdown files and has concise and clear syntax, essentially HTML.</p>
+</pre></p>
+<p>Their names are  Karen Blakemore.</p>
 
                     
                     </section>
@@ -572,10 +564,10 @@ implemented into the markdown files and has concise and clear syntax, essentiall
         </div>
 
         
-        <a href="../../hackathons/tinker/method.html" class="navigation navigation-prev " aria-label="Previous page: Method"><i class="fa fa-angle-left"></i></a>
+        <a href="../../hackathons/classmates/warmup.html" class="navigation navigation-prev " aria-label="Previous page: Warmup"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../hackathons/classmates/index.html" class="navigation navigation-next " aria-label="Next page: Classmates"><i class="fa fa-angle-right"></i></a>
+        <a href="../../hackathons/classmates/report.html" class="navigation navigation-next " aria-label="Next page: Report"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
