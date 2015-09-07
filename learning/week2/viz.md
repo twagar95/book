@@ -17,7 +17,8 @@ including the controls, widgets ...etc.
 
 # How big the deal Tableau really is?
 
-(write your answer based on the statistics you can find online)
+There are 28,000 customer accounts and growing. They also have a very impressive list of companies that 
+currently use them. 
 
 # How many people are in computer science?
 
