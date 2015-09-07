@@ -19,30 +19,29 @@ including the controls, widgets ...etc.
 
 (write your answer based on the statistics you can find online)
 
-# (Question 1)
+# How many people are in computer science?
 
-![screenshot](screenshot.png)
+![screenshot](screenshot1.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+If you look at the horizontal bar chart you can see two fields, non-CS and CS majors.
+This graph shows the difference between the two. 
 
-# (Question 2)
+# How many people names start with A?
 
-![screenshot](screenshot.png)
+![screenshot](names.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+Here you can see a "heat map" of the total number of names and the number of people with a name
+starting with A
 
-# (Question 3)
+# How many people aren't in computer science major?
 
-![screenshot](screenshot.png)
+![screenshot](screenshot1.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+If you look at the horizontal bar chart you can see two fields, non-CS and CS majors.
+This graph shows the difference between the two. 
 
-# (Question 4)
+# What is the id number of user zhya215?
 
-![screenshot](screenshot.png)
+![screenshot](zhili.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+Here you can see zhili's ID number in a big green bubble in the center of the screen.
