@@ -48,7 +48,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.4.2" data-basepath="../.." data-revision="Thu Sep 10 2015 16:01:28 GMT-0600 (MDT)">
+    <div class="book" data-level="1.4.2" data-basepath="../.." data-revision="Sun Sep 13 2015 22:25:46 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -618,27 +618,56 @@ programmer but also will pave the way for you to learn MapReduce and MongoDB.</p
     <span class="keyword">return</span> d.name
 })</pre></div><p></p>
 <h1 id="exercises">Exercises</h1>
-<p></p><h2>What names begin with the letter J?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John&apos;}, {name: &apos;Mary&apos;}, {name: &apos;Joe&apos;}, {name: &apos;Ben&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>[
+<p></p><h2>What names begin with the letter J?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John&apos;}, {name: &apos;Mary&apos;}, {name: &apos;Joe&apos;}, {name: &apos;Ben&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>[
   &quot;John&quot;,
   &quot;Joe&quot;
-]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
+]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>[
+  &quot;John&quot;,
+  &quot;Joe&quot;
+]</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> J = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">var</span> firstName = n.name
+  <span class="keyword">return</span> firstName.charAt(<span class="number">0</span>) == <span class="string">&apos;J&apos;</span>
+})
+
+<span class="keyword">var</span> result = _.map(J, <span class="keyword">function</span>(n){
+  <span class="keyword">return</span> n.name
+})
 <span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>How many Johns?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John&apos;}, {name: &apos;John&apos;}, {name: &apos;John&apos;}, {name: &apos;Ben&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>3</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>What are all the first names?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;}, {name: &apos;Mary Kay&apos;}, {name: &apos;Peter Pan&apos;}, {name: &apos;Ben Franklin&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>[
+<p></p><h2>How many Johns?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John&apos;}, {name: &apos;John&apos;}, {name: &apos;John&apos;}, {name: &apos;Ben&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>3</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>3</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">return</span> _.size(_.filter(data, {name: <span class="string">&apos;John&apos;</span>}))</pre></div><p></p>
+<p></p><h2>What are all the first names?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;}, {name: &apos;Mary Kay&apos;}, {name: &apos;Peter Pan&apos;}, {name: &apos;Ben Franklin&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>[
   &quot;John&quot;,
   &quot;Mary&quot;,
   &quot;Peter&quot;,
   &quot;Ben&quot;
-]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>What are the first names of Smith?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;}, {name: &apos;Mary Smith&apos;}, {name: &apos;Peter Pan&apos;}, {name: &apos;Ben Smith&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>[
+]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>[
+  &quot;John&quot;,
+  &quot;Mary&quot;,
+  &quot;Peter&quot;,
+  &quot;Ben&quot;
+]</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> names = _.map(data, <span class="keyword">function</span>(n){
+  <span class="keyword">var</span> firstName = n.name.split(<span class="string">&quot; &quot;</span>)
+  <span class="keyword">return</span> firstName[<span class="number">0</span>]
+})
+<span class="keyword">return</span> names</pre></div><p></p>
+<p></p><h2>What are the first names of Smith?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;}, {name: &apos;Mary Smith&apos;}, {name: &apos;Peter Pan&apos;}, {name: &apos;Ben Smith&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>[
   &quot;John&quot;,
   &quot;Mary&quot;,
   &quot;Ben&quot;
-]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>Change the format to lastname, firstname</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;}, {name: &apos;Mary Kay&apos;}, {name: &apos;Peter Pan&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>[
+]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>[
+  &quot;John&quot;,
+  &quot;Mary&quot;,
+  &quot;Ben&quot;
+]</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> smith = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">var</span> lastName = n.name.split(<span class="string">&quot; &quot;</span>)
+  <span class="keyword">return</span> lastName[<span class="number">1</span>] == <span class="string">&apos;Smith&apos;</span>
+})
+
+<span class="keyword">var</span> names = _.map(smith, <span class="keyword">function</span>(n){
+  <span class="keyword">var</span> firstName = n.name.split(<span class="string">&quot; &quot;</span>)
+  <span class="keyword">return</span> firstName[<span class="number">0</span>]
+})
+<span class="keyword">return</span> names</pre></div><p></p>
+<p></p><h2>Change the format to lastname, firstname</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;}, {name: &apos;Mary Kay&apos;}, {name: &apos;Peter Pan&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>[
   {
     &quot;name&quot;: &quot;Smith, John&quot;
   },
@@ -648,45 +677,124 @@ programmer but also will pave the way for you to learn MapReduce and MongoDB.</p
   {
     &quot;name&quot;: &quot;Pan, Peter&quot;
   }
-]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>How many women?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, gender: &apos;m&apos;}, {name: &apos;Mary Smith&apos;, gender: &apos;f&apos;}, {name: &apos;Peter Pan&apos;, gender: &apos;m&apos;}, {name: &apos;Ben Smith&apos;, gender: &apos;m&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>1</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>How many men whose last name is Smith?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, gender: &apos;m&apos;}, {name: &apos;Mary Smith&apos;, gender: &apos;f&apos;}, {name: &apos;Peter Pan&apos;, gender: &apos;m&apos;}, {name: &apos;Ben Smith&apos;, gender: &apos;m&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>2</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2></h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, gender: &apos;m&apos;}, {name: &apos;Mary Smith&apos;, gender: &apos;f&apos;}, {name: &apos;Peter Pan&apos;, gender: &apos;m&apos;}, {name: &apos;Ben Smith&apos;, gender: &apos;m&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>true</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>What is Peter Pan&apos;s gender?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, gender: &apos;m&apos;}, {name: &apos;Mary Smith&apos;, gender: &apos;f&apos;}, {name: &apos;Peter Pan&apos;, gender: &apos;m&apos;}, {name: &apos;Ben Smith&apos;, gender: &apos;m&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>&quot;m&quot;</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>What is the oldest age?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54}, {name: &apos;Mary Smith&apos;, age: 42}, {name: &apos;Peter Pan&apos;, age: 15}, {name: &apos;Ben Smith&apos;, age: 35}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>54</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>Is it true everyone is younger than 60?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54}, {name: &apos;Mary Smith&apos;, age: 42}, {name: &apos;Peter Pan&apos;, age: 15}, {name: &apos;Ben Smith&apos;, age: 35}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>true</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="comment">// use _.all</span>
-<span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>Is it true someone is not an adult (younger than 18)?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54}, {name: &apos;Mary Smith&apos;, age: 42}, {name: &apos;Peter Pan&apos;, age: 15}, {name: &apos;Ben Smith&apos;, age: 35}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>true</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="comment">// use _.some</span>
-<span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>How many people whose favorites include food?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;movies&apos;]},
+]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>[
+  {
+    &quot;name&quot;: &quot;Smith, John&quot;
+  },
+  {
+    &quot;name&quot;: &quot;Kay, Mary&quot;
+  },
+  {
+    &quot;name&quot;: &quot;Pan, Peter&quot;
+  }
+]</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> names = _.map(data, <span class="keyword">function</span>(n){
+  <span class="keyword">var</span> firstName = n.name.split(<span class="string">&quot; &quot;</span>)
+  <span class="keyword">return</span> {<span class="string">&apos;name&apos;</span>: firstName[<span class="number">1</span>] + <span class="string">&apos;, &apos;</span> + firstName[<span class="number">0</span>]}
+})
+<span class="keyword">return</span> names</pre></div><p></p>
+<p></p><h2>How many women?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, gender: &apos;m&apos;}, {name: &apos;Mary Smith&apos;, gender: &apos;f&apos;}, {name: &apos;Peter Pan&apos;, gender: &apos;m&apos;}, {name: &apos;Ben Smith&apos;, gender: &apos;m&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>1</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>1</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> genders = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">if</span>(n.gender == <span class="string">&apos;f&apos;</span>){
+    <span class="keyword">return</span> n
+  }
+})
+<span class="keyword">return</span> _.size(genders)</pre></div><p></p>
+<p></p><h2>How many men whose last name is Smith?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, gender: &apos;m&apos;}, {name: &apos;Mary Smith&apos;, gender: &apos;f&apos;}, {name: &apos;Peter Pan&apos;, gender: &apos;m&apos;}, {name: &apos;Ben Smith&apos;, gender: &apos;m&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>2</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>2</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> smith = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">var</span> lastName = n.name.split(<span class="string">&quot; &quot;</span>)
+  <span class="keyword">return</span> lastName[<span class="number">1</span>] == <span class="string">&apos;Smith&apos;</span>
+})
+
+<span class="keyword">var</span> genders = _.filter(smith, <span class="keyword">function</span>(n){
+  <span class="keyword">if</span>(n.gender == <span class="string">&apos;m&apos;</span>){
+    <span class="keyword">return</span> n
+  }
+})
+
+<span class="keyword">return</span> _.size(genders)</pre></div><p></p>
+<p></p><h2></h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, gender: &apos;m&apos;}, {name: &apos;Mary Smith&apos;, gender: &apos;f&apos;}, {name: &apos;Peter Pan&apos;, gender: &apos;m&apos;}, {name: &apos;Ben Smith&apos;, gender: &apos;m&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>true</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>true</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> fGender = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">if</span>(n.gender == <span class="string">&apos;f&apos;</span>){
+    <span class="keyword">return</span> n
+  }
+})
+
+<span class="keyword">var</span> mGender = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">if</span>(n.gender == <span class="string">&apos;m&apos;</span>){
+    <span class="keyword">return</span> n
+  }
+})
+<span class="keyword">if</span>(_.size(mGender) &gt; _.size(fGender)){
+  <span class="keyword">return</span> <span class="keyword">true</span>
+}
+<span class="keyword">else</span>{
+  <span class="keyword">return</span> <span class="keyword">false</span>
+}</pre></div><p></p>
+<p></p><h2>What is Peter Pan&apos;s gender?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, gender: &apos;m&apos;}, {name: &apos;Mary Smith&apos;, gender: &apos;f&apos;}, {name: &apos;Peter Pan&apos;, gender: &apos;m&apos;}, {name: &apos;Ben Smith&apos;, gender: &apos;m&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>&quot;m&quot;</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;m&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> peterPan = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">if</span>(n.name == <span class="string">&apos;Peter Pan&apos;</span>){
+    <span class="keyword">return</span> n
+  }
+})
+<span class="keyword">var</span> gender = _.pluck(peterPan, <span class="string">&apos;gender&apos;</span>)
+<span class="keyword">return</span> gender[<span class="number">0</span>]</pre></div><p></p>
+<p></p><h2>What is the oldest age?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54}, {name: &apos;Mary Smith&apos;, age: 42}, {name: &apos;Peter Pan&apos;, age: 15}, {name: &apos;Ben Smith&apos;, age: 35}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>54</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>54</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = _.pluck(data, <span class="string">&apos;age&apos;</span>)
+<span class="keyword">return</span> _.max(result)</pre></div><p></p>
+<p></p><h2>Is it true everyone is younger than 60?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54}, {name: &apos;Mary Smith&apos;, age: 42}, {name: &apos;Peter Pan&apos;, age: 15}, {name: &apos;Ben Smith&apos;, age: 35}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>true</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>true</pre></div></div></div><div class="section-title">Solution</div><pre><span class="comment">// use _.all</span>
+<span class="keyword">var</span> result = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">return</span> n.age &gt;= <span class="number">60</span>
+})
+<span class="keyword">return</span> _.size(result) == <span class="number">0</span></pre></div><p></p>
+<p></p><h2>Is it true someone is not an adult (younger than 18)?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54}, {name: &apos;Mary Smith&apos;, age: 42}, {name: &apos;Peter Pan&apos;, age: 15}, {name: &apos;Ben Smith&apos;, age: 35}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>true</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>true</pre></div></div></div><div class="section-title">Solution</div><pre><span class="comment">// use _.some</span>
+<span class="keyword">var</span> result = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">return</span> n.age &lt; <span class="number">18</span>
+})
+<span class="keyword">return</span> _.size(result) &gt; <span class="number">0</span></pre></div><p></p>
+<p></p><h2>How many people whose favorites include food?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;movies&apos;]},
  {name: &apos;Mary Smith&apos;, age: 42, favorites: [&apos;food&apos;, &apos;travel&apos;]},
  {name: &apos;Peter Pan&apos;, age: 15, favorites: [&apos;minecraft&apos;, &apos;pokemo&apos;]},
- {name: &apos;Ben Smith&apos;, age: 35, favorites: [&apos;craft&apos;, &apos;food&apos;]}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>3</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>Who are over 40 and love travel?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;movies&apos;]},
+ {name: &apos;Ben Smith&apos;, age: 35, favorites: [&apos;craft&apos;, &apos;food&apos;]}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>3</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>3</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">var</span> food = _.filter(n.favorites, <span class="keyword">function</span>(i){
+    <span class="keyword">return</span> i == <span class="string">&apos;food&apos;</span>
+  })
+  <span class="keyword">return</span> _.size(food) &gt; <span class="number">0</span>
+})
+<span class="keyword">return</span> _.size(result)</pre></div><p></p>
+<p></p><h2>Who are over 40 and love travel?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;movies&apos;]},
  {name: &apos;Mary Smith&apos;, age: 42, favorites: [&apos;food&apos;, &apos;travel&apos;]},
  {name: &apos;Peter Pan&apos;, age: 15, favorites: [&apos;minecraft&apos;, &apos;pokemo&apos;]},
  {name: &apos;Joe Johnson&apos;, age: 46, favorites: [&apos;travel&apos;, &apos;movies&apos;]},
  {name: &apos;Ben Smith&apos;, age: 35, favorites: [&apos;craft&apos;, &apos;food&apos;]}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>[
   &quot;Mary Smith&quot;,
   &quot;Joe Johnson&quot;
-]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
+]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>[
+  &quot;Mary Smith&quot;,
+  &quot;Joe Johnson&quot;
+]</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> travelers = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">var</span> travel = _.filter(n.favorites, <span class="keyword">function</span>(i){
+    <span class="keyword">return</span> i == <span class="string">&apos;travel&apos;</span>
+  })
+  <span class="keyword">return</span> _.size(travel) &gt; <span class="number">0</span>
+})
+<span class="keyword">var</span> oldTravelers = _.filter(travelers, <span class="keyword">function</span>(n){
+  <span class="keyword">return</span> n.age &gt; <span class="number">40</span>
+})
+
+<span class="keyword">var</span> result = _.map(oldTravelers, <span class="keyword">function</span>(n){
+  <span class="keyword">return</span> n.name
+})
 <span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>Who is the oldest person loving food?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;movies&apos;]},
+<p></p><h2>Who is the oldest person loving food?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;movies&apos;]},
  {name: &apos;Mary Smith&apos;, age: 42, favorites: [&apos;food&apos;, &apos;travel&apos;]},
  {name: &apos;Peter Pan&apos;, age: 15, favorites: [&apos;minecraft&apos;, &apos;pokemo&apos;]},
  {name: &apos;Joe Johnson&apos;, age: 46, favorites: [&apos;travel&apos;, &apos;movies&apos;]},
- {name: &apos;Ben Smith&apos;, age: 35, favorites: [&apos;craft&apos;, &apos;food&apos;]}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>&quot;John Smith&quot;</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>What are all the unique favorites?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;movies&apos;]},
+ {name: &apos;Ben Smith&apos;, age: 35, favorites: [&apos;craft&apos;, &apos;food&apos;]}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>&quot;John Smith&quot;</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;John Smith&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> foodies = _.filter(data, <span class="keyword">function</span>(n){
+  <span class="keyword">var</span> food = _.filter(n.favorites, <span class="keyword">function</span>(i){
+    <span class="keyword">return</span> i == <span class="string">&apos;food&apos;</span>
+  })
+  <span class="keyword">return</span> _.size(food) &gt; <span class="number">0</span>
+})
+<span class="keyword">var</span> result = _.max(foodies, <span class="keyword">function</span>(n){
+  <span class="keyword">return</span> n.age
+})
+<span class="keyword">return</span> result.name</pre></div><p></p>
+<p></p><h2>What are all the unique favorites?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;movies&apos;]},
  {name: &apos;Mary Smith&apos;, age: 42, favorites: [&apos;food&apos;, &apos;travel&apos;]},
  {name: &apos;Peter Pan&apos;, age: 15, favorites: [&apos;minecraft&apos;, &apos;pokemo&apos;]},
  {name: &apos;Joe Johnson&apos;, age: 46, favorites: [&apos;travel&apos;, &apos;movies&apos;]},
@@ -697,11 +805,21 @@ programmer but also will pave the way for you to learn MapReduce and MongoDB.</p
   &quot;minecraft&quot;,
   &quot;pokemo&quot;,
   &quot;craft&quot;
-]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="comment">// hint: use _.pluck, _.uniq, _.flatten in some order</span>
+]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>[
+  &quot;food&quot;,
+  &quot;movies&quot;,
+  &quot;travel&quot;,
+  &quot;minecraft&quot;,
+  &quot;pokemo&quot;,
+  &quot;craft&quot;
+]</pre></div></div></div><div class="section-title">Solution</div><pre><span class="comment">// hint: use _.pluck, _.uniq, _.flatten in some order</span>
 
-<span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
+<span class="keyword">var</span> favoritesList = _.pluck(data, <span class="string">&apos;favorites&apos;</span>)
+<span class="keyword">var</span> flattenedFavorites = _.flatten(favoritesList)
+<span class="keyword">var</span> result = _.uniq(flattenedFavorites)
+
 <span class="keyword">return</span> result</pre></div><p></p>
-<p></p><h2>What are all the unique last names?</h2><div class="lodashexercise">   <div class="result"></div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;movies&apos;]},
+<p></p><h2>What are all the unique last names?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;, age: 54, favorites: [&apos;food&apos;, &apos;movies&apos;]},
  {name: &apos;Mary Smith&apos;, age: 42, favorites: [&apos;food&apos;, &apos;travel&apos;]},
  {name: &apos;Peter Pan&apos;, age: 15, favorites: [&apos;minecraft&apos;, &apos;pokemo&apos;]},
  {name: &apos;Joe Johnson&apos;, age: 46, favorites: [&apos;travel&apos;, &apos;movies&apos;]},
@@ -709,8 +827,15 @@ programmer but also will pave the way for you to learn MapReduce and MongoDB.</p
   &quot;Smith&quot;,
   &quot;Pan&quot;,
   &quot;Johnson&quot;
-]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>&quot;not done&quot;</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = <span class="string">&apos;not done&apos;</span>
-<span class="keyword">return</span> result</pre></div><p></p>
+]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>[
+  &quot;Smith&quot;,
+  &quot;Pan&quot;,
+  &quot;Johnson&quot;
+]</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> result = _.map(data, <span class="keyword">function</span>(n){
+  <span class="keyword">var</span> lastName = n.name.split(<span class="string">&quot; &quot;</span>)
+  <span class="keyword">return</span> lastName[<span class="number">1</span>]
+})
+<span class="keyword">return</span> _.uniq(result)</pre></div><p></p>
 
                     
                     </section>
