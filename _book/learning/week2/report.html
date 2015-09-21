@@ -29,6 +29,10 @@
         
     
         
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+        
+    
+        
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
         
     
@@ -48,7 +52,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.3.1" data-basepath="../.." data-revision="Sun Sep 20 2015 22:34:13 GMT-0600 (MDT)">
+    <div class="book" data-level="1.3.1" data-basepath="../.." data-revision="Mon Sep 21 2015 16:49:54 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -379,6 +383,72 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6" data-path="learning/week5/index.html">
+            
+                
+                    <a href="../../learning/week5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        Week 5
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="learning/week5/birdstrike-report.html">
+            
+                
+                    <a href="../../learning/week5/birdstrike-report.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.1.</b>
+                        
+                        Birdstrike Report
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="learning/week5/viz-steps.html">
+            
+                
+                    <a href="../../learning/week5/viz-steps.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.2.</b>
+                        
+                        Viz Intro
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="learning/week5/viz-drills.html">
+            
+                
+                    <a href="../../learning/week5/viz-drills.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.3.</b>
+                        
+                        Viz Drills
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
             </ul>
             
@@ -583,6 +653,42 @@
             
         </li>
     
+        <li class="chapter " data-level="2.4" data-path="hackathons/birdstrikes/index.html">
+            
+                
+                    <a href="../../hackathons/birdstrikes/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        Birdstrikes
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="hackathons/birdstrikes/report.html">
+            
+                
+                    <a href="../../hackathons/birdstrikes/report.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.1.</b>
+                        
+                        Report
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
             </ul>
             
@@ -698,46 +804,34 @@
 class, we brainstormed and came up with a long list of further questions we can
 ask based on this data. Our team chose to tackle on the following:</p>
 <h1 id="how-many-people-are-in-computer-science">How many people are in computer science?</h1>
-<p><pre>
-<span class="keyword">return</span> _.size(_.filter(data.comments, <span class="keyword">function</span>(n){
-    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Computer Science&quot;</span>) || _.includes(n.body, <span class="string">&quot;CS&quot;</span>);
-}))
-
-</pre></p>
+<p><pre><code>return _.size(_.filter(data.comments, function(n){
+	return _.includes(n.body,&quot;Computer Science&quot;) || _.includes(n.body, &quot;CS&quot;);
+}))</code></pre></p>
 <p>20</p>
 <h1 id="how-many-people-names-start-with-a">How many people names start with A?</h1>
-<p><pre>
-
-<span class="keyword">var</span> <span class="keyword">list</span> = _.filter(_.pluck(data.comments, <span class="string">&apos;body&apos;</span>), <span class="keyword">function</span>(text){
-    <span class="keyword">var</span> a = text.split(<span class="string">&quot;\r\n&quot;</span>)[<span class="number">0</span>]
-    <span class="keyword">var</span> name = _.last(text.split(<span class="string">&quot;Name:&quot;</span>))
-    <span class="keyword">return</span> name.charAt(<span class="number">1</span>) == <span class="string">&apos;A&apos;</span>
+<p><pre><code>var list = _.filter(_.pluck(data.comments, &apos;body&apos;), function(text){
+	var a = text.split(&quot;\r\n&quot;)[0]
+	var name = _.last(text.split(&quot;Name:&quot;))
+	return name.charAt(1) == &apos;A&apos;
 })
 
-<span class="keyword">return</span> _.size(<span class="keyword">list</span>)
-</pre></p>
+return _.size(list)</code></pre></p>
 <p>4</p>
 <h1 id="how-many-people-are-not-a-computer-science-major">How many people are not a computer science major?</h1>
-<p><pre>
-<span class="keyword">return</span> data.comments.length - _.size(_.filter(data.comments, <span class="keyword">function</span>(n){
-    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Computer Science&quot;</span>) || _.includes(n.body, <span class="string">&quot;CS&quot;</span>);
-}))
-</pre></p>
+<p><pre><code>return data.comments.length - _.size(_.filter(data.comments, function(n){
+	return _.includes(n.body,&quot;Computer Science&quot;) || _.includes(n.body, &quot;CS&quot;);
+}))</code></pre></p>
 <p>6</p>
 <h1 id="what-is-the-id-number-of-user-zhya215">What is the id number of user zhya215?</h1>
-<p><pre>
-
-<span class="keyword">var</span> x = _.filter(data.comments, <span class="keyword">function</span>(n){
-    <span class="keyword">return</span> _.includes(n.user,<span class="string">&quot;zhya215&quot;</span>);
+<p><pre><code>var x = _.filter(data.comments, function(n){
+	return _.includes(n.user,&quot;zhya215&quot;);
 })
 
-<span class="keyword">var</span> y = _.pluck(x, <span class="string">&apos;user.id&apos;</span>)
+var y = _.pluck(x, &apos;user.id&apos;)
 
 console.log(y)
 
-<span class="keyword">return</span> y
-
-</pre><div class="console">console&gt; [
+return y</code></pre><div class="console">console&gt; [
  5596113
 ]
 </div></p>
@@ -762,6 +856,14 @@ console.log(y)
 
         
 <script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-bigdata/bigdata.js"></script>
+    
+
+    
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+    
 
     
     <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
