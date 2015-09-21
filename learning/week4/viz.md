@@ -19,37 +19,34 @@ how to transform this JSON file into a format that can be fed into Tableau. As
 a junior and senior, you are expected to be able to look around the Internet
 to problem solve.
 
-# (Question 1)
+# Which instructor's course has the highest enrollment? by Zhili Yang
 
-![screenshot](screenshot.png)
+![screenshot](zhili.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+Here you can see a self explanatory bar graph that illustrates the point well.
 
-# (Question 2)
+# How many courses in IPHY that has 4 credits hours ? by Fadhil Fath
 
-![screenshot](screenshot.png)
+![screenshot](fahids.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+Here you can see each individual square as a representation of the sum of courses of that level for each department.
+Hover over the squares in tableau to analyze the individual numbers. 
 
-# (Question 3)
+# Which departments offer the most 4000 level classes? by Brian McKean
 
-![screenshot](screenshot.png)
+![screenshot](brians.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+Although my screen was not big enough to display all the departments, PSYC had the highest amount of 4000 level courses.
+The bars represent how many courses of each level there are. 
 
-# (Question 4)
+# Which department has the highest enrollment? by Tristan Wagar
 
-![screenshot](screenshot.png)
+![screenshot](tristan.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+Here you can see a self explanatory bar graph that illustrates the point well. 
 
-# (Question 5)
+# What instructor has the highest rating? by Andrew Krodinger
 
-![screenshot](screenshot.png)
+![screenshot](andrews.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)    
+Here you can see the name of the instructor and the rating they have earned.     
