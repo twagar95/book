@@ -6,53 +6,48 @@ bird strikes.
 # Authors
 
 This report is prepared by
-* [Full name](link to github account)
-* [Full name](link to github account)
-* [Full name](link to github account)
-* [Full name](link to github account)
-* [Full name](link to github account)
+* [Tristan Wagar](www.github.com/twagar95)
+* [John Murphy](www.github.com/johnmurph27)
+* [Nicole Woytarowicz](www.github.com/nicolele)
+* [Satchel Spencer](www.github.com/satchelspencer)
+* [Sushant Mittal](www.github.com/sumi6109)
 
-# (Question 1)
+#What states cost the airlines the most money? (Cost and location)
 
-This question was asked by (student's github id).
+This question was asked by willzfarmer.
 
-![screenshot](screenshot.png)
+![screenshot](satchel.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+Darker colors represent more total cost for a given region.
 
-# (Question 2)
+# Which airport has the highest number struck?
 
-This question was asked by (student's github id).
+This question was asked by zhya215.
 
-![screenshot](screenshot.png)
+![screenshot](birds1.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+Y-axis shows the name of each airport, while the bar represents the amount of birds hit by each plane that has departed from that airport. The unknown column exists because some reports did not include that in the depart field. 
 
-# (Question 3)
+# Which airlines have the worst luck with birdstrikes in terms of damage caused?
 
-This question was asked by (student's github id).
+This question was asked by calebhsu.
 
-![screenshot](screenshot.png)
+![screenshot](john.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+The largest circles correspond to the airlines that spend the most money on bird strikes. Large airlines spend the most amount on birdstrikes a year typically. 
 
-# (Question 4)
+# What are the top 5 bird species that are involved?
 
-This question was asked by (student's github id).
+This question was asked by ZachLamb.
 
-![screenshot](screenshot.png)
+![screenshot](species.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)
+The bigger and more darkly shaded circles show which species has a more frequent occurrence in the reports. Certain species with low occurrences have been removed and so have unknown species.
 
-# (Question 5)
+# What is the frequency of bird strikes at various height ranges ?
 
-This question was asked by (student's github id).
+This question was asked by kari santos.
 
-![screenshot](screenshot.png)
+![screenshot](w51.png)
 
-(write your explanation for the reader as to where to look at this chart in order
-    to see the answer)    
+X axis shows feet above the ground and Y axis show the number of records i.e number of birds hit.The trend shows that as the height decreases, the frequency of hit  also decreases.    
