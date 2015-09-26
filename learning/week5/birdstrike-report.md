@@ -45,7 +45,19 @@ return _.chain(data).groupBy('Origin State').mapValues(function(state){
 }).pairs().sortByOrder('1', 1).object().value();
 {% endlodash %}
 
-{{result}}
+<table>
+
+  <tr>
+      <td>Height</td>
+      <td>Number of birds hit</td>
+  </tr>
+{% for key, value in result %}
+  <tr>
+      <td>{{key}}</td>
+      <td>{{value}}</td>
+  </tr>
+{% endfor %}
+</table>
 
 # What is the frequency of bird strikes at various height ranges ? by sumi6109
 
@@ -104,8 +116,36 @@ return _.slice(top, [start=0], [end=5])
 
 {{ result | json }}
 
-# (Question 5) by (Name)
+# What Airline loses the most money to bird strikes every year? by John
 
 {% lodash %}
-return "[answer]"
+var groups = _.groupBy(data, function(n){
+    return n['Aircraft: Airline/Operator']
+})
+var pairs =  _.pairs(_.mapValues(groups, function(item){
+  var costs =   _.map(item, function(value){    
+    return parseInt(value['Cost: Total $'].toString().replace(',', ''))   })
+  return _.sum(costs)
+  
+  }))
+var top = _.sortBy(pairs, function(n){
+  return n[1] 
+  }).reverse()
+top = _.slice(top, [start =0], [end=10])
+
+return top
 {% endlodash %}
+
+<table>
+
+  <tr>
+      <td>Height</td>
+      <td>Number of birds hit</td>
+  </tr>
+{% for key, value in result %}
+  <tr>
+      <td>{{key}}</td>
+      <td>{{value}}</td>
+  </tr>
+{% endfor %}
+</table>
