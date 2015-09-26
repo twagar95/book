@@ -29,6 +29,10 @@
         
     
         
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-bigdata/jquery.jsonview.css">
+        
+    
+        
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
         
     
@@ -52,7 +56,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.6.1" data-basepath="../.." data-revision="Mon Sep 21 2015 18:05:53 GMT-0600 (MDT)">
+    <div class="book" data-level="1.6.1" data-basepath="../.." data-revision="Fri Sep 25 2015 18:20:11 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -444,6 +448,21 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6.4" data-path="learning/week5/viz-pokemon.html">
+            
+                
+                    <a href="../../learning/week5/viz-pokemon.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.4.</b>
+                        
+                        Viz Pokemon
+                    </a>
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -810,14 +829,689 @@ Utilize <code>_.map</code>, <code>_.filter</code>, <code>_.group</code> ...etc. 
 <p>This time, the data is not already prepared for you in a nice JSON format. You
 will need to do it on your own, replacing the placeholder <code>birdstrike.json</code> with
 real data.</p>
-<h1 id="-question-1-by-name">(Question 1) by (Name)</h1>
-<p><pre><code>return &quot;[answer]&quot;</code></pre></p>
-<h1 id="-question-2-by-name">(Question 2) by (Name)</h1>
-<p><pre><code>return &quot;[answer]&quot;</code></pre></p>
-<h1 id="-question-3-by-name">(Question 3) by (Name)</h1>
-<p><pre><code>return &quot;[answer]&quot;</code></pre></p>
-<h1 id="-question-4-by-name">(Question 4) by (Name)</h1>
-<p><pre><code>return &quot;[answer]&quot;</code></pre></p>
+<h1 id="which-airport-has-the-highest-number-struck-by-twagar95">Which airport has the highest number struck? by twagar95</h1>
+<p><pre><code>var groups = _.groupBy(data, function(n){
+    return n[&apos;Airport: Name&apos;]
+})
+
+var valuedGroups = _.values(groups)
+var result = _.chain(valuedGroups)
+                .map(function(arr){
+                    return [arr[0][&quot;Airport: Name&quot;], arr.length]
+                })
+                .reduce(function(n, p){
+                    if ((n[1] &gt; p[1]) &amp;&amp; (n[0] != &quot;UNKNOWN&quot;)) { return n; } else {return p; }
+                }).value()
+
+return result</code></pre>
+DENVER INTL AIRPORT,156</p>
+<h1 id="what-states-cost-the-airlines-the-most-money-by-satchelspencer">What states cost the airlines the most money? by SatchelSpencer</h1>
+<p><pre><code>//What states cost the airlines the most money?
+return _.chain(data).groupBy(&apos;Origin State&apos;).mapValues(function(state){
+    return _.reduce(state, function(sum, incident){
+        return sum+parseInt(incident[&apos;Cost: Total $&apos;].toString().replace(&apos;,&apos;, &apos;&apos;));
+    }, 0);
+}).pairs().sortByOrder(&apos;1&apos;, 1).object().value();</code></pre></p>
+<p>[object Object]</p>
+<h1 id="what-is-the-frequency-of-bird-strikes-at-various-height-ranges-by-sumi6109">What is the frequency of bird strikes at various height ranges ? by sumi6109</h1>
+<p><pre><code>var data_poistive=_.filter(data,function(r){return parseInt(r[&apos;Feet above ground&apos;])&gt; 0})
+
+var grps =_.groupBy(data_poistive,function(d){return d[&apos;Feet above ground&apos;]})
+var result=_.mapValues(grps,function(t){return t.length})
+
+var sorted = _.sortBy(_.pairs(result), function(d) {
+ 
+    return parseInt(d[0].replace(&apos;,&apos;, &apos;&apos;));
+});
+var desc = _(sorted).value()
+return desc
+//return result</code></pre></p>
+<table>
+
+  <tr>
+      <td>Height</td>
+      <td>Number of birds hit</td>
+  </tr>
+
+  <tr>
+      <td>2</td>
+      <td>6</td>
+  </tr>
+
+  <tr>
+      <td>3</td>
+      <td>7</td>
+  </tr>
+
+  <tr>
+      <td>4</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>5</td>
+      <td>23</td>
+  </tr>
+
+  <tr>
+      <td>7</td>
+      <td>2</td>
+  </tr>
+
+  <tr>
+      <td>9</td>
+      <td>3</td>
+  </tr>
+
+  <tr>
+      <td>10</td>
+      <td>82</td>
+  </tr>
+
+  <tr>
+      <td>12</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>15</td>
+      <td>10</td>
+  </tr>
+
+  <tr>
+      <td>20</td>
+      <td>62</td>
+  </tr>
+
+  <tr>
+      <td>25</td>
+      <td>10</td>
+  </tr>
+
+  <tr>
+      <td>30</td>
+      <td>20</td>
+  </tr>
+
+  <tr>
+      <td>34</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>35</td>
+      <td>2</td>
+  </tr>
+
+  <tr>
+      <td>38</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>40</td>
+      <td>12</td>
+  </tr>
+
+  <tr>
+      <td>50</td>
+      <td>134</td>
+  </tr>
+
+  <tr>
+      <td>60</td>
+      <td>2</td>
+  </tr>
+
+  <tr>
+      <td>70</td>
+      <td>2</td>
+  </tr>
+
+  <tr>
+      <td>75</td>
+      <td>12</td>
+  </tr>
+
+  <tr>
+      <td>80</td>
+      <td>2</td>
+  </tr>
+
+  <tr>
+      <td>85</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>90</td>
+      <td>3</td>
+  </tr>
+
+  <tr>
+      <td>100</td>
+      <td>150</td>
+  </tr>
+
+  <tr>
+      <td>105</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>110</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>120</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>125</td>
+      <td>2</td>
+  </tr>
+
+  <tr>
+      <td>140</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>150</td>
+      <td>24</td>
+  </tr>
+
+  <tr>
+      <td>180</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>200</td>
+      <td>108</td>
+  </tr>
+
+  <tr>
+      <td>250</td>
+      <td>7</td>
+  </tr>
+
+  <tr>
+      <td>300</td>
+      <td>81</td>
+  </tr>
+
+  <tr>
+      <td>350</td>
+      <td>6</td>
+  </tr>
+
+  <tr>
+      <td>360</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>400</td>
+      <td>52</td>
+  </tr>
+
+  <tr>
+      <td>450</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>500</td>
+      <td>100</td>
+  </tr>
+
+  <tr>
+      <td>550</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>600</td>
+      <td>21</td>
+  </tr>
+
+  <tr>
+      <td>650</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>700</td>
+      <td>19</td>
+  </tr>
+
+  <tr>
+      <td>750</td>
+      <td>3</td>
+  </tr>
+
+  <tr>
+      <td>760</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>775</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>800</td>
+      <td>50</td>
+  </tr>
+
+  <tr>
+      <td>850</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>900</td>
+      <td>13</td>
+  </tr>
+
+  <tr>
+      <td>930</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>950</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>1,000</td>
+      <td>88</td>
+  </tr>
+
+  <tr>
+      <td>1,100</td>
+      <td>8</td>
+  </tr>
+
+  <tr>
+      <td>1,150</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>1,200</td>
+      <td>26</td>
+  </tr>
+
+  <tr>
+      <td>1,300</td>
+      <td>7</td>
+  </tr>
+
+  <tr>
+      <td>1,400</td>
+      <td>9</td>
+  </tr>
+
+  <tr>
+      <td>1,500</td>
+      <td>65</td>
+  </tr>
+
+  <tr>
+      <td>1,600</td>
+      <td>8</td>
+  </tr>
+
+  <tr>
+      <td>1,700</td>
+      <td>8</td>
+  </tr>
+
+  <tr>
+      <td>1,800</td>
+      <td>15</td>
+  </tr>
+
+  <tr>
+      <td>1,900</td>
+      <td>11</td>
+  </tr>
+
+  <tr>
+      <td>2,000</td>
+      <td>70</td>
+  </tr>
+
+  <tr>
+      <td>2,081</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>2,100</td>
+      <td>5</td>
+  </tr>
+
+  <tr>
+      <td>2,200</td>
+      <td>4</td>
+  </tr>
+
+  <tr>
+      <td>2,300</td>
+      <td>7</td>
+  </tr>
+
+  <tr>
+      <td>2,400</td>
+      <td>3</td>
+  </tr>
+
+  <tr>
+      <td>2,500</td>
+      <td>31</td>
+  </tr>
+
+  <tr>
+      <td>2,600</td>
+      <td>4</td>
+  </tr>
+
+  <tr>
+      <td>2,700</td>
+      <td>2</td>
+  </tr>
+
+  <tr>
+      <td>2,800</td>
+      <td>3</td>
+  </tr>
+
+  <tr>
+      <td>2,900</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>2,970</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>3,000</td>
+      <td>56</td>
+  </tr>
+
+  <tr>
+      <td>3,100</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>3,200</td>
+      <td>5</td>
+  </tr>
+
+  <tr>
+      <td>3,300</td>
+      <td>4</td>
+  </tr>
+
+  <tr>
+      <td>3,400</td>
+      <td>2</td>
+  </tr>
+
+  <tr>
+      <td>3,500</td>
+      <td>13</td>
+  </tr>
+
+  <tr>
+      <td>3,700</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>4,000</td>
+      <td>27</td>
+  </tr>
+
+  <tr>
+      <td>4,100</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>4,200</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>4,300</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>4,700</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>5,000</td>
+      <td>37</td>
+  </tr>
+
+  <tr>
+      <td>5,100</td>
+      <td>2</td>
+  </tr>
+
+  <tr>
+      <td>5,500</td>
+      <td>4</td>
+  </tr>
+
+  <tr>
+      <td>5,600</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>5,800</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>6,000</td>
+      <td>11</td>
+  </tr>
+
+  <tr>
+      <td>6,200</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>6,300</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>6,500</td>
+      <td>3</td>
+  </tr>
+
+  <tr>
+      <td>7,000</td>
+      <td>20</td>
+  </tr>
+
+  <tr>
+      <td>7,200</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>7,500</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>7,700</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>8,000</td>
+      <td>12</td>
+  </tr>
+
+  <tr>
+      <td>8,300</td>
+      <td>2</td>
+  </tr>
+
+  <tr>
+      <td>8,500</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>8,900</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>9,000</td>
+      <td>3</td>
+  </tr>
+
+  <tr>
+      <td>9,500</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>9,650</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>10,000</td>
+      <td>4</td>
+  </tr>
+
+  <tr>
+      <td>10,500</td>
+      <td>2</td>
+  </tr>
+
+  <tr>
+      <td>10,800</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>11,000</td>
+      <td>6</td>
+  </tr>
+
+  <tr>
+      <td>12,000</td>
+      <td>6</td>
+  </tr>
+
+  <tr>
+      <td>12,300</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>12,500</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>12,600</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>13,000</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>15,000</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>16,000</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>17,000</td>
+      <td>1</td>
+  </tr>
+
+  <tr>
+      <td>21,000</td>
+      <td>1</td>
+  </tr>
+
+</table>
+
+<h1 id="what-are-the-top-5-bird-species-that-are-involved-by-nicolele">What are the top 5 bird species that are involved? by nicolele</h1>
+<p>// What are the top 5 bird species that are involved?</p>
+<p><pre><code>var clean = _.reject(data, function(n){
+    return _.includes(n[&apos;Wildlife: Species&apos;], &apos;Unknown&apos;)
+})
+
+var groups = _.groupBy(clean, function(d){
+    return d[&apos;Wildlife: Species&apos;]   
+})
+
+var birds = _.pairs(_.mapValues(groups, function(value){
+    return value.length
+}))
+
+var top = _.sortBy(birds, function(n) {
+    return n[1]
+}).reverse()
+
+return _.slice(top, [start=0], [end=5])</code></pre></p>
+<pre style="font-size:11px;line-height:1;max-height:300px;">[
+ [
+  &quot;Gulls&quot;,
+  251
+ ],
+ [
+  &quot;Mourning dove&quot;,
+  163
+ ],
+ [
+  &quot;European starling&quot;,
+  121
+ ],
+ [
+  &quot;Sparrows&quot;,
+  98
+ ],
+ [
+  &quot;Rock pigeon&quot;,
+  95
+ ]
+]</pre>
+
 <h1 id="-question-5-by-name">(Question 5) by (Name)</h1>
 <p><pre><code>return &quot;[answer]&quot;</code></pre></p>
 
@@ -847,6 +1541,10 @@ real data.</p>
 
     
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-bigdata/jquery.jsonview.js"></script>
     
 
     
