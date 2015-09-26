@@ -140,7 +140,7 @@ return top
 
   <tr>
       <td>Height</td>
-      <td>Number of birds hit</td>
+      <td>Total Cost</td>
   </tr>
 {% for key, value in result %}
   <tr>
