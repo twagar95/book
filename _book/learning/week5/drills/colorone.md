@@ -18,11 +18,16 @@ function computeX(d, i) {
 }
 
 function computeHeight(d, i) {
-    return i * 20 + 20 // TODO
+    return d.pop * (400/1393783836)
 }
 
 function computeColor(d, i) {
-    return 'red' // TODO
+    if(d.name == 'USA'){
+        return 'blue'
+    }   
+    else{
+        return 'red'
+    }
 }
 
 var viz = _.map(data, function(d, i){

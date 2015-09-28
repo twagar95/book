@@ -14,7 +14,7 @@ Reverse the order of the bars
 {% solution %}
 
 function computeX(d, i) {
-    return i * 20
+    return ((_.size(data) - 1) * 20) - i * 20
 }
 
 function computeHeight(d, i) {
