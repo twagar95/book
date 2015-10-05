@@ -28,36 +28,44 @@ There are {{ data.length }} apps.
 ## 3- How many apps have been downloaded more than 10,000,000?
 {% mongoquery %}
 
+{"dct": {"$gt": 10000000}}
+
 {% endmongoquery %}
 
 {{ data | json }}
 
-(answer)
+There are {{data.length}} apps downloaded more than 10,000,000 times
 
 ## 4- How many apps have the word "share" in their description?
 Hint: the desc field is indexed with a text index. Use the $text operator.
 
 {% mongoquery %}
 
+{"$text":{"$search": "share"}}
+
 {% endmongoquery %}
 
 {{ data | json }}
 
-(answer)
+There are {{data.length}} apps with the word share in their description
 
 ## 5- Find apps that are categorized in any of the following categories: Productivity, Business, or Finance?
 Hint: Use the $in operator.
 
 {% mongoquery %}
 
+{"cat": {"$in": ["Productivity", "Finance", "Business"]}}
+
 {% endmongoquery %}
 
 {{ data | json }}
 
-(answer)
+There are {{data.length}} apps with those categories. 
 
 ## 6- Find apps that have been downloaded 10,000,000 or more but have star rating lower than 3 stars?
 {% mongoquery %}
+
+{"$and": [{"dct": {"$gte": 10000000}}, {"rate": {"$lt": 3}}]}
 
 {% endmongoquery %}
 
@@ -71,6 +79,8 @@ https://play.google.com/store/apps/details?id={{data[0].n}} Read the reviews to 
 ## 7- Find the title and creator of apps that have been rated above 4 stars by 1,000,000 or more users?
 {% mongoquery %}
 
+{"$and": [{"rct": {"$gte": 1000000}}, {"rate": {"$gt": 4}}]},{"t":1, "crt": 1}
+
 {% endmongoquery %}
 
 {{ data | json }}
@@ -80,6 +90,8 @@ There are {{ data.length }} apps.
 ## 8- Find apps whose content rating is Teen but not categorized in any of the following categories: Card, Entertainment, Comics, and Puzzle?
 {% mongoquery %}
 
+{"$and": [{"crat": "Teen"}, {"cat":{"$nin": ["Comics", "Card", "Entertainment", "Puzzle"]}}]}
+
 {% endmongoquery %}
 
 {{ data | json }}
@@ -88,6 +100,8 @@ There are {{ data.length }} apps.
 
 ## 9- Find the title, category, download count, and star rating of apps with the phrase "in-app purchase" in their description and download count greater than 10,000,000?
 {% mongoquery %}
+
+{"$and": [{"$text":{"$search": "in-app purchase"}}, {"dct": {"$gt": 10000000}}]},{"t":1, "cat": 1, "rct": 1, "rate": 1}
 
 {% endmongoquery %}
 
@@ -100,6 +114,8 @@ Hint: ensure that the results include apps that have creator address (not equal 
 
 {% mongoquery %}
 
+{"$and": [{"rate": {"$gt": 4.5}}, {"dct": {"$gt": 1000000}}]},{"t":1, "cadd": 1}
+
 {% endmongoquery %}
 
 {{ data | json }}
@@ -109,6 +125,8 @@ There are {{ data.length }} apps.
 ## 11- Find the title, category, download count, and rating of apps with download count of 1,000,000 or more but have no privacy ststements?
 
 {% mongoquery %}
+
+{"$and": [{"purl": ""}, {"dct": {"$gte": 1000000}}]},{"cat":1, "rate": 1, "t": 1, "dct": 1}
 
 {% endmongoquery %}
 
@@ -120,6 +138,8 @@ There are {{ data.length }} apps.
 Hint: You can use the $regex operator
 
 {% mongoquery %}
+
+{"dtp": {"$regex": "September.*2015"}}
 
 {% endmongoquery %}
 
